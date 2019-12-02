@@ -42,7 +42,7 @@ try:
 except:
     print 'Errors in options.ini'
 
-if len(sys.argv) >= 2:
+if len(sys.argv) >= 3:
     outFolder=sys.argv[3] +"/"
     if not os.access(outFolder, os.W_OK):
         outFolder=""
