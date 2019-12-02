@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 from parsers.DefaultTSPParser import DefaultTSPParser
 from regression.CloneFrequencyComputer_cnv1 import CloneFrequencyComputer_cnv1
