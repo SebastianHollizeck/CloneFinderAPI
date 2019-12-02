@@ -1,6 +1,3 @@
-#!/usr/bin/env python2
-#
-# start script for clonefinder. adpated from CloneFinderAPI
 
 from parsers.DefaultTSPParser import DefaultTSPParser
 from regression.CloneFrequencyComputer_cnv1 import CloneFrequencyComputer_cnv1
