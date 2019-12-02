@@ -190,8 +190,8 @@ else:
         CloFreAna.save_frequency_table_to_file(outFolder + params.input_id + '_CloneFinder.txt',  significant_clone_frequency,  [])
 
 #######################
-os.remove(params.input_id + '.txt')
-os.remove(params.input_id + '-CNV.txt')
+#os.remove(params.input_id + '.txt')
+#os.remove(params.input_id + '-CNV.txt')
 os.remove('Ini.meg')
 os.remove('Ini_freq.txt')
 os.remove('Test.meg')
