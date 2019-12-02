@@ -44,7 +44,7 @@ except:
 
 if len(sys.argv) >= 2:
     outFolder=sys.argv[3] +"/"
-    if ! os.access(outFolder, os.W_OK):
+    if not os.access(outFolder, os.W_OK):
         outFolder=""
 
 
