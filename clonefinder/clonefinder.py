@@ -20,6 +20,8 @@ from significance_test.cluster_test import cluster_test
 import os
 import sys
 import datetime
+
+
 print 'python CloneFinder.py snv [snv_input]'
 startTime = datetime.datetime.now()
 print startTime
@@ -39,6 +41,12 @@ try:
 
 except:
     print 'Errors in options.ini'
+
+if len(sys.argv) >= 2:
+    outFolder=sys.argv[3] +"/"
+    if ! os.access(outFolder, os.W_OK):
+        outFolder=""
+
 
 parser = DefaultTSPParser()
 parser.input_data_file = params.input_data_file
@@ -175,8 +183,8 @@ else:
         print 'test clone hit and remove insignificant clones'
         significant_clone=cluster_test()
         significant_seq, significant_clone_frequency= significant_clone.remove_insignificant_clones(v_obs, clone_freq,  mask_seq_comb, CNV_information_test, Significant_cutoff)
-        Align.save_mega_alignment_to_file(params.input_id + '_CloneFinder.meg', significant_seq)
-        CloFreAna.save_frequency_table_to_file(params.input_id + '_CloneFinder.txt',  significant_clone_frequency,  [])
+        Align.save_mega_alignment_to_file(outFolder + params.input_id + '_CloneFinder.meg', significant_seq)
+        CloFreAna.save_frequency_table_to_file(outFolder + params.input_id + '_CloneFinder.txt',  significant_clone_frequency,  [])
 
 #######################
 os.remove(params.input_id + '.txt')
@@ -185,7 +193,7 @@ os.remove('Ini.meg')
 os.remove('Ini_freq.txt')
 os.remove('Test.meg')
 
-timeFile = params.input_id + '_summary.txt'
+timeFile = outFolder +  params.input_id + '_summary.txt'
 endTime = datetime.datetime.now()
 print endTime
 totalTime = (endTime - startTime)
