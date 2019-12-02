@@ -30,7 +30,7 @@ tree_builder = MegaMP()
 tree_builder.mao_file = dir + '/infer_MP_nucleotide.mao'
 try:
     loader = ParamsLoader()
-    loader.params_file = dir + 'options.ini' #options_file
+    loader.params_file = dir + '/options.ini' #options_file
     params = loader.load_params()
     total_read_cut = params.total_read_cut
     mutant_read_cut = params.mutant_read_cut
