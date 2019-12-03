@@ -1,0 +1,9 @@
+input data file: ../Example_data/Inputsnv.txt
+total read count cutoff: 50
+mutant read count cutoff: 2
+clone frequency cutoff: 0.02
+
+hybrid sample genotypes were suggested: ['R6']
+Hybrid sample genotype was decomposed
+100.0% of SNV sites are not affected by backward/parallel mutations.
+Run time: 0:00:01.826410
