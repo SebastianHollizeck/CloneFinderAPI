@@ -29,7 +29,7 @@ maoFile = dir + "infer_MP_nucleotide.mao"
 iniFile = dir + "options.ini"
 
 
-if sys.argv[1] == "-h" or sys.argv[1] == "--help":
+if len(sys.argv) or sys.argv[1] == "-h" or sys.argv[1] == "--help":
     print("Usage: clonefinder.py snv <input>")
     exit(0)
 
