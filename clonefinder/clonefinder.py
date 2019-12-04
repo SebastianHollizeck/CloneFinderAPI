@@ -21,12 +21,17 @@ import os
 import sys
 import datetime
 
+
 ##global parameter
 # get the path of the dir in which the script is so we can source the ini and the mao file
 dir = os.path.dirname(sys.argv[0]) + "/"
 maoFile = dir + "infer_MP_nucleotide.mao"
 iniFile = dir + "options.ini"
 
+
+if sys.argv[1] == "-h" or sys.argv[1] == "--help":
+    print("Usage: clonefinder.py snv <input>")
+    exit(0)
 
 # pvalue (should go into a input parameter)
 Significant_cutoff = 0.05
