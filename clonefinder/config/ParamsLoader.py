@@ -2,6 +2,7 @@ from config.CloneFinderParams import CloneFinderParams
 from parsers.ParamsParser import ParamsParser
 import os.path
 import sys
+import argparse
 from config.FormatInput import FormatInput
 
 clone_finder_params = None  # used as a global instance of the params object
@@ -36,25 +37,31 @@ class ParamsLoader(object):
         # now that we know the file exists, we can parse it
         result = parser.parse_config_file(self._params_file)
 
-        Data = sys.argv[1]
-        result.data_format = Data
-        if Data == "snv":
-            result.snv_data_file = sys.argv[2]
-            result.cnv_data_file = sys.argv[2][:-4] + "snv-CNV.txt"
+        # get to the commandline parsing
+        parser = argparse.ArgumentParser()
+        parser.add_argument(
+            "data", help="Data type to analyse (currently only supports snv)"
+        )
+        parser.add_argument("input", help="input file of variants (tab seperated file)")
+        parser.add_argument(
+            "-o", "--output", help="Output folder to write final files to", default="./"
+        )
+
+        args = parser.parse_args()
+
+        if args.data == "snv":
+            result.data_format = args.data
+            result.snv_data_file = args.input
+            result.cnv_data_file = args.input[:-4] + "snv-CNV.txt"
             adjust_format.snv2snv(result.snv_data_file, "withCNVfile")
-            result.input_data_file = sys.argv[2][:-4] + "snv.txt"
+            result.input_data_file = args.input[:-4] + "snv.txt"
         else:
-            print(
+            raise EnvironmentError(
                 "the command should be python CloneFinder.py snv [input]\npython CloneFinder.py "
             )
 
-        result.input_id = os.path.basename(sys.argv[2])[:-4] + Data
-        if len(sys.argv) >= 4:
-            outFolder = sys.argv[3] + "/"
-            if not os.access(outFolder, os.W_OK):
-                result.ouputFolder = ""
-                print(" outPutFolder", outFolder, " is not writable")
-            else:
-                result.outputFolder = outFolder
+        result.input_id = os.path.basename(sys.argv[2])[:-4] + args.data
+        result.outputFolder = args.output
+
         clone_finder_params = result
         return clone_finder_params
