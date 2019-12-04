@@ -69,7 +69,8 @@ except IOError:
     print("Could not find options.ini file")
 except:
     print("Errors in options.ini")
-    exit(1)
+    print("Unexpected error:", sys.exc_info()[0])
+    raise
 
 parser = DefaultTSPParser()
 parser.input_data_file = params.input_data_file
