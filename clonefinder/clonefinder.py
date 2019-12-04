@@ -326,6 +326,7 @@ else:
     )
 
 #######################
+print(params.input_data_file[:-4] + ".txt")
 os.remove(params.input_data_file[:-4] + ".txt")
 os.remove(params.input_data_file[:-4] + "-CNV.txt")
 os.remove("Ini.meg")

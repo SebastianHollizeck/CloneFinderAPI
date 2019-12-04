@@ -50,10 +50,11 @@ class ParamsLoader(object):
 
         result.input_id = os.path.basename(sys.argv[2])[:-4] + Data
         if len(sys.argv) >= 4:
-            result.outputFolder = sys.argv[3] + "/"
+            outFolder = sys.argv[3] + "/"
             if not os.access(outFolder, os.W_OK):
-                outFolder = ""
+                result.ouputFolder = ""
                 print(" outPutFolder", outFolder, " is not writable")
-
+            else:
+                result.outputFolder = outFolder
         clone_finder_params = result
         return clone_finder_params

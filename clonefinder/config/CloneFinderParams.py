@@ -155,7 +155,7 @@ class CloneFinderParams(object):
         return self._outputFolder
 
     @outputFolder.setter
-    def oupPutFolder(self, value):
+    def outputFolder(self, value):
         self._outputFolder = value
 
     def _is_integer(self, value):
