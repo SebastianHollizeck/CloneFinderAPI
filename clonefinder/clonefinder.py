@@ -28,8 +28,10 @@ dir = os.path.dirname(sys.argv[0]) + "/"
 maoFile = dir + "infer_MP_nucleotide.mao"
 iniFile = dir + "options.ini"
 
+print(sys.argv)
 
-if len(sys.argv) == 1 or sys.argv[1] == "-h" or sys.argv[1] == "--help":
+# argv[0] is the name of the progam itself
+if len(sys.argv) == 2 or sys.argv[1] == "-h" or sys.argv[1] == "--help":
     print("Usage: clonefinder.py snv <input>")
     exit(0)
 
